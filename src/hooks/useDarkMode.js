@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import { useLocalStorage } from './useLocalStorage';
 
 export const useDarkMode = () => {
-    const [isActivated, setIsActivated] = useLocalStorage('');
+    const [isActivated, setIsActivated] = useLocalStorage();
 
     useEffect(() => {
         if (isActivated === true) {
-            return document.body.className.add = 'dark-mode'
+            return document.body.classList.add('dark-mode')
         } else {
-            return document.body.className.remove = 'dark-mode'
+            return document.body.classList.remove('dark-mode')
         }
     }, [isActivated])
 
@@ -17,5 +17,5 @@ export const useDarkMode = () => {
     //     setIsActivated(!isActivated)
     // }
 
-    return [isActivated, handleChanges, setIsActivated]
+    return [isActivated, setIsActivated]
 }
