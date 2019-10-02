@@ -5,17 +5,15 @@ export const useDarkMode = () => {
     const [isActivated, setIsActivated] = useLocalStorage();
 
     useEffect(() => {
-        if (isActivated === true) {
-            return document.body.classList.add('dark-mode')
-        } else {
-            return document.body.classList.remove('dark-mode')
-        }
+        return (isActivated === true
+            ? document.body.classList.add('dark-mode')
+            : document.body.classList.remove('dark-mode'))
     }, [isActivated])
 
-    // const handleChanges = e => {
-    //     e.preventDefault();
-    //     setIsActivated(!isActivated)
-    // }
+    const handleChanges = e => {
+        e.preventDefault();
+        setIsActivated(!isActivated)
+    }
 
-    return [isActivated, setIsActivated]
+    return [isActivated, handleChanges, setIsActivated]
 }
